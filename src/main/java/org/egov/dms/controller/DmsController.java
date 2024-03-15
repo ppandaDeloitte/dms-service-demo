@@ -43,12 +43,12 @@ public class DmsController {
 		return status;
 	}
 	
-	
+	/*
 	@PostMapping(value = "/getDocumentDetailsByUserName")
 	public DocumentResponseStatus getDocumentDetailsByUserName(@RequestBody Document document) {
 		return docService.getDocumentDetailsByUserName(document);
 	}
-	
+	*/
 	@PostMapping(value = "/searchDocumentByUserNameAndStatus")
 	public DocumentResponse searchDocumentByUserNameAndStatus(@RequestBody Document document) {
 		System.out.println("Inside Document Filter");
