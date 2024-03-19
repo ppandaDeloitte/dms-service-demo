@@ -17,4 +17,7 @@ public interface DocumentWorkflowRepository extends JpaRepository<DocumentWorkfl
 	
 	@Query("select d from DocumentWorkflow d WHERE assignedTo = :assignedTo AND active = 'true'")
 	List<DocumentWorkflow> searchDucumentByUserAndStatus(@Param(value="assignedTo")String assignedTo);
+	
+	@Query("select d from DocumentWorkflow d WHERE assignedTo = :createdBy AND active = 'true' AND dmsDocId = :id")
+	DocumentWorkflow searchDucumentByUser(@Param(value = "createdBy")String createdBy, @Param(value = "id")Long id);
 }

@@ -1,7 +1,6 @@
 package org.egov.dms.controller;
 
 import org.egov.dms.model.Document;
-import org.egov.dms.model.DocumentEntity;
 import org.egov.dms.model.DocumentRequest;
 import org.egov.dms.model.DocumentResponse;
 import org.egov.dms.model.StatusResponse;
@@ -59,15 +58,23 @@ public class DmsController {
 	
 	@PostMapping(value = "/documentSave")
 	public StatusResponse alfrescoDocumetSaveModify(@RequestBody DocumentRequest document) {
-		System.out.println("Inside Document save Modify");
+		//System.out.println("Inside Document save Modify");
 		StatusResponse status  =	docService.alfrescoDocumetSaveModify(document);
 		return status;
 	}
 	
 	@PostMapping(value = "/searchDocumentByUserNameAndStatus")
 	public DocumentResponse searchDocumentByUserNameAndStatusModify(@RequestBody DocumentRequest document) {
-		System.out.println("Inside Document Filter");
+		//System.out.println("Inside Document Filter");
 	return	docService.searchDocumentByUserNameAndStatusModify(document);
+		
+		
+	}
+	
+	@PostMapping(value = "/getDataByID")
+	public Document getDataByID(@RequestBody DocumentRequest document) {
+		//System.out.println("Inside Document Filter");
+	return	docService.getDataByID(document);
 		
 		
 	}

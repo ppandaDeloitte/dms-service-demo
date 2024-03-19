@@ -194,13 +194,13 @@ public class DocumentService {
 		List<DocumentEntity> entityList = new ArrayList<DocumentEntity>();
 		List<Document> documentList = new ArrayList<Document>();
 		List<DocumentWorkflow> workflowList = docWorkflowRepo.searchDucumentByUserAndStatus(document.getCreatedBy());
-		System.out.println(workflowList);
+		//System.out.println(workflowList);
 		
 		if(!workflowList.isEmpty()) {
 			for(DocumentWorkflow workflow: workflowList) {
 				//workflow.getDmsDocId();
 				Optional<DocumentEntity> entity =	repository.findById(workflow.getDmsDocId());
-				System.out.println("Document Data ::"+entity.get());
+				//System.out.println("Document Data ::"+entity.get());
 				DocumentEntity documentResult = entity.get();
 					Document doc = new Document();
 					doc.setId(documentResult.getId());
@@ -218,7 +218,7 @@ public class DocumentService {
 			}
 		}
 		
-		System.out.println("Response List: "+documentList);
+		//System.out.println("Response List: "+documentList);
 		
 		DocumentResponse status = new DocumentResponse();
 		if (documentList != null && documentList.size()>0) {
@@ -243,6 +243,34 @@ public class DocumentService {
 		status.setPendingCount(pendingCount);
 
 		return status;
+	}
+
+	public Document getDataByID(DocumentRequest document) {
+		//DocumentWorkflow workflowList = docWorkflowRepo.searchDucumentByUser(document.getCreatedBy(),document.getDocId());
+		Optional<DocumentEntity> entity =	repository.findById(document.getId());
+		//DocumentWorkflow workflowList = docWorkflowRepo.searchDucumentByUser(document.getCreatedBy());
+		//System.out.println("Document Data ::"+entity.get());
+		DocumentEntity documentResult = entity.get();
+		
+		DocumentWorkflow workflow = docWorkflowRepo.searchDucumentByUser(document.getCreatedBy(),documentResult.getId());
+		//System.out.println("Document Result :"+documentResult);
+		//System.out.println("Workflow Result :"+workflow);
+		
+		  Document doc = new Document();
+		  doc.setId(documentResult.getId());
+		  doc.setDocId(documentResult.getDocId());
+		  doc.setDocName(documentResult.getDocName());
+		  doc.setCreatedBy(workflow.getSubmittedBy());
+		  doc.setAssignedTo(workflow.getAssignedTo());
+		  doc.setAssignedTime(documentResult.getAssignedTime());
+		  doc.setCurrentStatus(documentResult.getCurrentStatus());
+		  doc.setDownload(documentResult.getDownload());
+		  doc.setColumn1(documentResult.getColumn1());
+		  doc.setColumn2(documentResult.getColumn2());
+		  doc.setActive(workflow.isActive());
+		 
+			
+		return doc;
 	}
 
 }
