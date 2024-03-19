@@ -7,4 +7,5 @@ public class StatusResponse {
 
 	private String status;
 	private String message;
+	private DocumentEntity data;
 }

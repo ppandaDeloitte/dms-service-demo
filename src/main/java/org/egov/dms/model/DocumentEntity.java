@@ -25,11 +25,11 @@ public class DocumentEntity {
 		@Column(name = "doc_name")
 	    private String docName;
 		
-		@Column(name = "created_by")
-	    private String createdBy;
-		
-		@Column(name = "assigned_to")
-	    private String assignedTo;
+		/*
+		 * @Column(name = "created_by") private String createdBy;
+		 * 
+		 * @Column(name = "assigned_to") private String assignedTo;
+		 */
 		
 		@Column(name = "assigned_time")
 	    private Date assignedTime;
@@ -43,4 +43,6 @@ public class DocumentEntity {
 	    private String column1;
 		@Column(name = "column2")
 	    private String column2;
+		
+		
 }

@@ -2,8 +2,8 @@ package org.egov.dms.controller;
 
 import org.egov.dms.model.Document;
 import org.egov.dms.model.DocumentEntity;
+import org.egov.dms.model.DocumentRequest;
 import org.egov.dms.model.DocumentResponse;
-import org.egov.dms.model.DocumentResponseStatus;
 import org.egov.dms.model.StatusResponse;
 import org.egov.dms.model.UserEntity;
 import org.egov.dms.model.UserResponseStatus;
@@ -35,7 +35,7 @@ public class DmsController {
 		return userService.loginByUserName(user);
 		
 	}
-	
+	/*
 	@PostMapping(value = "/documentSave")
 	public StatusResponse alfrescoDocumetSave(@RequestBody DocumentEntity document) {
 		System.out.println("Inside Document save");
@@ -48,15 +48,28 @@ public class DmsController {
 	public DocumentResponseStatus getDocumentDetailsByUserName(@RequestBody Document document) {
 		return docService.getDocumentDetailsByUserName(document);
 	}
-	*/
+	
 	@PostMapping(value = "/searchDocumentByUserNameAndStatus")
 	public DocumentResponse searchDocumentByUserNameAndStatus(@RequestBody Document document) {
 		System.out.println("Inside Document Filter");
 	return	docService.searchDocumentByUserNameAndStatus(document);
 		
 		
+	}*/
+	
+	@PostMapping(value = "/documentSave")
+	public StatusResponse alfrescoDocumetSaveModify(@RequestBody DocumentRequest document) {
+		System.out.println("Inside Document save Modify");
+		StatusResponse status  =	docService.alfrescoDocumetSaveModify(document);
+		return status;
 	}
 	
-	
+	@PostMapping(value = "/searchDocumentByUserNameAndStatus")
+	public DocumentResponse searchDocumentByUserNameAndStatusModify(@RequestBody DocumentRequest document) {
+		System.out.println("Inside Document Filter");
+	return	docService.searchDocumentByUserNameAndStatusModify(document);
+		
+		
+	}
 	
 }

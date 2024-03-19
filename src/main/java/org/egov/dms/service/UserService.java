@@ -50,4 +50,9 @@ public class UserService {
 		return status;
 		
 	}
+	public UserEntity getUserDetailsByName(String createdBy) {
+		
+		UserEntity entity=	repository.findByName(createdBy);
+		return entity;
+	}
 }

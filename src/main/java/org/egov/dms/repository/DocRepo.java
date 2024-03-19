@@ -39,7 +39,7 @@ public class DocRepo {
 				@Override
 				public Document mapRow(ResultSet rs, int rowNum) throws SQLException {
 					Document doc = new Document();
-					doc.setId(rs.getInt("id"));
+					doc.setId((long) rs.getInt("id"));
 					doc.setDocId(rs.getString("doc_id"));
 					doc.setDocName(rs.getString("doc_name"));
 					doc.setCreatedBy(rs.getString("created_by"));
