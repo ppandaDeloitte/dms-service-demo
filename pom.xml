@@ -59,10 +59,10 @@
 			<version>9.0.8</version>
 		</dependency>
 		
-    <dependency>
+   <!--  <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-devtools</artifactId>
-    </dependency>
+    </dependency> -->
 
 		<dependency>
 			<groupId>io.swagger</groupId>

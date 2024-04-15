@@ -62,7 +62,6 @@ public class DmsController {
 	
 	@PostMapping(value = "/documentSave")
 	public StatusResponse alfrescoDocumetSaveModify(@RequestBody DocumentRequest document) {
-		//System.out.println("Inside Document save Modify");
 		StatusResponse status  =	docService.alfrescoDocumetSaveModify(document);
 		return status;
 	}

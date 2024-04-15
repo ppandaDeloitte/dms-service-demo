@@ -37,15 +37,17 @@ public class DocumentEntity {
 	    private String column1;
 		@Column(name = "column2")
 	    private String column2;
-		@Column(name = "user_id")
-		private String userId;
-		@Column(name = "state_id")
-		private String stateId;
+		/*
+		 * @Column(name = "user_id") private String userId;
+		 */
+		/*
+		 * @Column(name = "state_id") private String stateId;
+		 */
 		@Column(name = "active")
 		private Boolean isActive;
 		
 		@Column(name = "hindi_doc")
-		private String hindi_doc;
+		private String hindiDoc;
 		
 		@Column(name = "hindi_doc_id")
 		private String hindiDocId;

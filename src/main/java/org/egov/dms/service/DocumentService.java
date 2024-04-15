@@ -109,6 +109,7 @@ public class DocumentService {
 	}
 */
 	public StatusResponse alfrescoDocumetSaveModify(DocumentRequest documentrequest) {
+		
 		StatusResponse status  = new StatusResponse();
 		DocumentEntity entity = new DocumentEntity();
 		DocumentEntity entityResponse = new DocumentEntity();
@@ -125,14 +126,17 @@ public class DocumentService {
 			entity.setColumn1(documentrequest.getColumn1());
 			entity.setColumn2(documentrequest.getColumn2());
 			entity.setAssignedTime(new Date());
+			entity.setHindiDoc(documentrequest.getHindiDoc());
+			entity.setHindiDocName(documentrequest.getHindiDocName());
+			entity.setHindiDocId(documentrequest.getHindiDocId());
 			
 			workflow.setSubmittedBy(documentrequest.getCreatedBy());
 			workflow.setAssignedTo(documentrequest.getAssignedTo());
 			workflow.setDocumentId(documentrequest.getDocId());
 			workflow.setTransitionTime(new Date());
-			if(!documentrequest.getHindiDocId().isEmpty()) {
+			//if(!documentrequest.getHindiDocId().isEmpty()) {
 				workflow.setHindiDocId(documentrequest.getHindiDocId());
-			}
+			//}
 			
 			if(entity.getId()==null) {
 				entityResponse =	 repository.save(entity);
