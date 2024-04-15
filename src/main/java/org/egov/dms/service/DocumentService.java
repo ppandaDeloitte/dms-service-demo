@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.egov.dms.model.Document;
+import org.egov.dms.model.DocumentDTO;
 import org.egov.dms.model.DocumentEntity;
 import org.egov.dms.model.DocumentRequest;
 import org.egov.dms.model.DocumentResponse;
@@ -129,6 +130,9 @@ public class DocumentService {
 			workflow.setAssignedTo(documentrequest.getAssignedTo());
 			workflow.setDocumentId(documentrequest.getDocId());
 			workflow.setTransitionTime(new Date());
+			if(!documentrequest.getHindiDocId().isEmpty()) {
+				workflow.setHindiDocId(documentrequest.getHindiDocId());
+			}
 			
 			if(entity.getId()==null) {
 				entityResponse =	 repository.save(entity);
@@ -271,6 +275,13 @@ public class DocumentService {
 		 
 			
 		return doc;
+	}
+
+	public List<DocumentDTO> getDataWorkflowByID(DocumentRequest document) {
+		
+	return	docRepo.getDocumentDetailsWorkflow(document);
+		
+		
 	}
 
 }

@@ -13,6 +13,7 @@ public class DocumentRequest {
     
     private String currentStatus;
     private String download;
+    private String hindiDocId;
     private String column1;
     private String column2;
 }

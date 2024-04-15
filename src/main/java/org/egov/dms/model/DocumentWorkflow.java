@@ -39,6 +39,9 @@ public class DocumentWorkflow {
 
     @Column(name = "transition_time")
     private Date transitionTime;
+    
+    @Column(name = "hindi_doc_id")
+    private String hindiDocId;
 
    
 
