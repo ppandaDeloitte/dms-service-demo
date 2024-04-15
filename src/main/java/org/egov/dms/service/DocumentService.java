@@ -284,4 +284,9 @@ public class DocumentService {
 		
 	}
 
+	public List<DocumentEntity> getDmsDocuments() {
+		// TODO Auto-generated method stub
+		return repository.findAll();
+	}
+
 }

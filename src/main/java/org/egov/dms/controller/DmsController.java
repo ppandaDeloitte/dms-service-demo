@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.egov.dms.model.Document;
 import org.egov.dms.model.DocumentDTO;
+import org.egov.dms.model.DocumentEntity;
 import org.egov.dms.model.DocumentRequest;
 import org.egov.dms.model.DocumentResponse;
 import org.egov.dms.model.StatusResponse;
@@ -87,6 +88,14 @@ public class DmsController {
 		//System.out.println("Inside Document Filter");
 	
 		return docService.getDataWorkflowByID(document);
+		
+		
+	}
+	@PostMapping(value = "/getDmsDocuments")
+	public List<DocumentEntity> getDmsDocuments() {
+		//System.out.println("Inside Document Filter");
+		
+		return docService.getDmsDocuments();
 		
 		
 	}
