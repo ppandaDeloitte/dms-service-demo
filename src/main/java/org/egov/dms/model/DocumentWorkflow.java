@@ -44,6 +44,7 @@ public class DocumentWorkflow {
     private String hindiDocId;
 
    
-
+    @Column(name = "comments")
+    private String comments;
    
 }

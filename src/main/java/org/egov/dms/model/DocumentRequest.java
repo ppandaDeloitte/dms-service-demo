@@ -18,4 +18,5 @@ public class DocumentRequest {
     private String column2;
     private String hindiDocName;
     private String hindiDoc;
+    private String comments;
 }

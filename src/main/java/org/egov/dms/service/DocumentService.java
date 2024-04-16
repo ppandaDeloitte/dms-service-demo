@@ -114,6 +114,7 @@ public class DocumentService {
 		DocumentEntity entity = new DocumentEntity();
 		DocumentEntity entityResponse = new DocumentEntity();
 		DocumentWorkflow workflow = new DocumentWorkflow();
+		DocumentWorkflow workflowResponse = new DocumentWorkflow();
 		try {
 			/*
 			 * Data set into documentEntity
@@ -135,14 +136,15 @@ public class DocumentService {
 			workflow.setDocumentId(documentrequest.getDocId());
 			workflow.setTransitionTime(new Date());
 			//if(!documentrequest.getHindiDocId().isEmpty()) {
-				workflow.setHindiDocId(documentrequest.getHindiDocId());
+			workflow.setHindiDocId(documentrequest.getHindiDocId());
+				workflow.setComments(documentrequest.getComments());
 			//}
 			
 			if(entity.getId()==null) {
 				entityResponse =	 repository.save(entity);
 				workflow.setDmsDocId(entityResponse.getId());
 				workflow.setActive(true);
-				docWorkflowRepo.save(workflow);
+				workflowResponse =	docWorkflowRepo.save(workflow);
 			}else {
 				Optional<DocumentEntity> optionalEntity = repository.findById(entity.getId());
 
@@ -170,14 +172,14 @@ public class DocumentService {
 		            	//workflowToUpdate.setAssignedTo(documentrequest.getAssignedTo());
 		            	//workflowToUpdate.setDocumentId(documentrequest.getDocId());
 		            	//workflowToUpdate.setTransitionTime(new Date());
-		            	docWorkflowRepo.save(workflowToUpdate);
+		            	workflowResponse =    	docWorkflowRepo.save(workflowToUpdate);
 		            	
 		            	System.out.println("workflow data saved successfully");
 		            }else {
-		            	docWorkflowRepo.save(workflow);
+		            	workflowResponse =	docWorkflowRepo.save(workflow);
 		            	System.out.println("Else workflow data  saved successfully");
 		            }
-		            docWorkflowRepo.save(workflow);
+		            workflowResponse = docWorkflowRepo.save(workflow);
 		            
 		        } 
 			}
@@ -187,6 +189,7 @@ public class DocumentService {
 				status.setStatus("201");
 				status.setMessage("Application Send Successfully for Approval");
 				status.setData(entityResponse);
+				status.setDocumentWorkflow(workflowResponse);
 			}
 			System.out.println(entityResponse);
 		} catch (Exception e) {

@@ -75,7 +75,7 @@ public class DocRepo {
 
 				DocumentDTO dto = new DocumentDTO();
 				dto.setDocument_id(rs.getLong("document_id"));
-				dto.setDoc_id(rs.getString("doc_id"));
+				dto.setDoc_id(rs.getString("workflow_doc_id"));
 				dto.setDoc_name(rs.getString("doc_name"));
 				dto.setAssigned_time(rs.getDate("assigned_time"));
 				dto.setCurrent_status(rs.getString("current_status"));
@@ -87,7 +87,8 @@ public class DocRepo {
 				dto.setTo_user_assigned(rs.getString("to_user_assigned"));
 				dto.setWorkflow_active(rs.getBoolean("workflow_active"));
 				dto.setTransition_time(rs.getDate("transition_time"));
-				dto.setHindi_doc_id(rs.getString("hindi_doc_id"));
+				dto.setHindi_doc_id(rs.getString("workflow_hindi_doc_id"));
+				dto.setHindi_doc_id(rs.getString("workflow_hindi_doc_id"));
 
 				jdbcTemplate.query(builder.getToUserName(), new Object[] { rs.getString("to_user_assigned") },
 						result -> {

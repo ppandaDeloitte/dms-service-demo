@@ -20,11 +20,12 @@ public class DMSQueryBuilder {
 				"    d.hindi_doc_id,\r\n" + 
 				"    d.hindi_doc_name,\r\n" + 
 				"    dw.id AS workflow_id,\r\n" + 
+				"    dw.document_id AS workflow_doc_id,\r\n" + 
 				"    dw.from_user_submitted,\r\n" + 
 				"    dw.to_user_assigned,\r\n" + 
 				"    dw.active AS workflow_active,\r\n" + 
 				"    dw.transition_time, \r\n" + 
-				"    dw.hindi_doc_id\r\n" + 
+				"    dw.hindi_doc_id AS workflow_hindi_doc_id\r\n" + 
 				"FROM \r\n" + 
 				"    public.dms_document d \r\n" + 
 				"INNER JOIN \r\n" + 
