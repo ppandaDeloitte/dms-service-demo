@@ -2,10 +2,13 @@ package org.egov.dms.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.egov.dms.builder.DMSQueryBuilder;
 import org.egov.dms.model.Document;
@@ -72,12 +75,17 @@ public class DocRepo {
 		paramMap.put("doc_id", document.getId());
 		try {
 			jdbcTemplate.query(builder.queryFordocumentDetails(), new Object[] { document.getId() }, rs -> {
-
+				 //Timestamp timestamp = Timestamp.valueOf("2024-04-08 13:07:44.188");
+			        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			        sdf.setTimeZone(TimeZone.getDefault()); // Set to local time zon
 				DocumentDTO dto = new DocumentDTO();
 				dto.setDocument_id(rs.getLong("document_id"));
 				dto.setDoc_id(rs.getString("workflow_doc_id"));
 				dto.setDoc_name(rs.getString("doc_name"));
-				dto.setAssigned_time(rs.getDate("assigned_time"));
+				Timestamp timestamp = rs.getTimestamp("assigned_time");
+				
+				//dto.setAssigned_time(rs.getTimestamp("assigned_time"));
+				dto.setAssigned_time(sdf.format(timestamp));
 				dto.setCurrent_status(rs.getString("current_status"));
 				dto.setColumn1(rs.getString("column1"));
 				dto.setColumn2(rs.getString("column2"));
@@ -86,7 +94,8 @@ public class DocRepo {
 				dto.setFrom_user_submitted(rs.getString("from_user_submitted"));
 				dto.setTo_user_assigned(rs.getString("to_user_assigned"));
 				dto.setWorkflow_active(rs.getBoolean("workflow_active"));
-				dto.setTransition_time(rs.getDate("transition_time"));
+				Timestamp transitionTimestamp = rs.getTimestamp("transition_time");
+				dto.setTransition_time(sdf.format(transitionTimestamp));
 				dto.setHindi_doc_id(rs.getString("workflow_hindi_doc_id"));
 				dto.setHindi_doc_id(rs.getString("workflow_hindi_doc_id"));
 
