@@ -31,7 +31,9 @@ public class DMSQueryBuilder {
 				"INNER JOIN \r\n" + 
 				"    public.document_workflow dw ON d.id = dw.dms_doc_id\r\n" + 
 				"WHERE \r\n" + 
-				"    d.id = ?";
+				"    d.id = ? "
+				+ "ORDER BY \r\n" + 
+				"    d.assigned_time ASC";
 		
 		return query;
 	}
